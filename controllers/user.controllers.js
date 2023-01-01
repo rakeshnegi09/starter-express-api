@@ -45,27 +45,32 @@ module.exports = {
 			var url_parts = url.parse(req.url, true);
 			var query = url_parts.query;
 			var request_token = query.request_token;
-			kc.generateSession(request_token, secret)
-			.then(function(response) {
-				var fs = require('fs');
-				var stream = fs.createWriteStream('verification.txt')
-				stream.once('open', function(fd) {
-					stream.write(request_token+"\n");
-					stream.write(response.access_token+"\n");
-					stream.end();
-				}); 
- 
-				var token = new Token(); 
-				token.request_token = request_token;
-				token.access_token = response.access_token;
-				token.date = convertDate(new Date());
-				token.save();
-				res.send({"result":"Login Success"});	
+			if(typeof request_token !== "undefined"){
+				kc.generateSession(request_token, secret)
+				.then(function(response) {
+					var fs = require('fs');
+					var stream = fs.createWriteStream('verification.txt')
+					stream.once('open', function(fd) {
+						stream.write(request_token+"\n");
+						stream.write(response.access_token+"\n");
+						stream.end();
+					}); 
+	
+						var token = new Token(); 
+						token.request_token = request_token;
+						token.access_token = response.access_token;
+						token.date = convertDate(new Date());
+						token.save();
+						res.send({"result":"Login Success"});	
 
-			})
-			.catch(function(err) {
-				console.log(err);
-			})
+				})
+				.catch(function(err) {
+					console.log(err);
+				})
+			}else{
+				res.send({"result":"Invalid request"});
+			}
+			
 		}else{
 			res.send({"result":"Already Exist"});
 		}		
