@@ -32,6 +32,11 @@ app.use(function(req, res, next) {
 	res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, noauth ,Authorization,X-Auth-Token");
 	next();
  }); 
+
+ require('dns').lookup(require('os').hostname(), function (err, add, fam) {
+	console.log('addr: ' + add);
+  })
+
  app.use('/',rtsIndex); 
  app.listen(process.env.PORT,()=>console.log(`server started at port: ${process.env.PORT}`));
 
