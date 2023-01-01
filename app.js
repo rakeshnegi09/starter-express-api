@@ -76,7 +76,7 @@ app.use(function(req, res, next) {
   })
 
  app.use('/',rtsIndex); 
- app.listen(process.env.PORT,()=>console.log(`server started at port: ${process.env.PORT}`));
+ app.listen(7373,()=>console.log(`server started at port: 7373`));
 
 //https.createServer(https_options, app).listen(`${process.env.PORT}`,'0.0.0.0');
 
