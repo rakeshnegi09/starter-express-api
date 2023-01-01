@@ -1,0 +1,11 @@
+{
+	"development":{
+		"MONGODB_URI":"mongodb://localhost:27017/zerodha_api",
+		"JWT_SECRET":"jkksd5565",
+		"JWT_EXP":"2000000m"
+	},
+	"production":{
+		"PORT":80,
+		"MONGODB_URI":"mongodb://localhost:27017/zerodha_api"
+	}
+}
