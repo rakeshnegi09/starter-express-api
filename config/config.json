@@ -1,12 +1,11 @@
 {
 	"development":{
-		"MONGODB_URI":"mongodb+srv://zerodha_api:dvRtaAubzJ6J35qx@cluster0.jhw5sct.mongodb.net/?retryWrites=true&w=majority",
+		"MONGODB_URI":"mongodb://localhost:27017/zerodha_api",
 		"JWT_SECRET":"jkksd5565",
 		"JWT_EXP":"2000000m"
 	},
 	"production":{
-		"MONGODB_URI":"mongodb+srv://zerodha_api:dvRtaAubzJ6J35qx@cluster0.jhw5sct.mongodb.net/?retryWrites=true&w=majority",
-		"JWT_SECRET":"jkksd5565",
-		"JWT_EXP":"2000000m"
+		"PORT":80,
+		"MONGODB_URI":"mongodb://localhost:27017/zerodha_api"
 	}
 }
